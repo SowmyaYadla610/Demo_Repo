@@ -1,13 +1,9 @@
-name: Demo Workflow
-# Build with Maven
+name: Java CI
 
-on:
- push
-   branch: {'main'}
+on: [push]
 
-
- jobs:
-   build:
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,4 +13,6 @@ on:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots package
    
